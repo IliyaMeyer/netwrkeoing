@@ -7,12 +7,11 @@ import java.io.*;
 *   data stream
 *   @param type This is the type of data that is being sent
 *               0: Server message
-*               1: Client message (Global)
-*               2: Client message (Private)
-*               3: Set client nickname
+*               1: Client message
+*               2: Set client nickname
 *   @param id   Id of the message being sent
-*   @param user Id of user for sending private message
-*   @param message The message to be sent/ or Client nickname if type 3
+*   @param user Id of user for sending private message. If client-server then it is the recipient, if server-client then it is the sender
+*   @param message The message to be sent/ or Client nickname if type 2
 *   @param map  Hashmap of all connected clients sent with server message when
 *               a user joins or disconnects
 */
