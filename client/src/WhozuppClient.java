@@ -12,8 +12,12 @@ public class WhozuppClient {
    private ObjectOutputStream objOut;
    private ObjectInputStream objIn;
 
-   public WhozuppClient() throws IOException {
-      try {
+   public WhozuppClient() {
+      connect();
+   }
+
+   public void connect() {
+            try {
          this.whozSocket = new Socket(hostName, portNumber);
          this.objOut = new ObjectOutputStream(whozSocket.getOutputStream());
          this.objIn = new ObjectInputStream(whozSocket.getInputStream());
@@ -22,7 +26,6 @@ public class WhozuppClient {
                 hostName);
          System.exit(1);
       }
-
    }
 /**
 *  This needs to be run right after connection is established to set the user
