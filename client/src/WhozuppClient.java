@@ -41,7 +41,7 @@ public class WhozuppClient {
    public boolean sendNickname(String Nickname)
    {
       try {
-         WhozuppDataObject data = new WhozuppDataObject(2, 0, 0, Nickname, null);
+         WhozuppDataObject data = new WhozuppDataObject(2, 0, Nickname, null, null);
          objOut.writeObject(data);
          //Waits for servr to check nickname and then reply
          data = (WhozuppDataObject) objIn.readObject();
@@ -66,7 +66,7 @@ public class WhozuppClient {
 *
 *  @return  True if message sent. False if it fails
 */
-   public boolean sendMessage(int user, String message)
+   public boolean sendMessage(String user, String message)
    {
    // Default message id set for now
       try {

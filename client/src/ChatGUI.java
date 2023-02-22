@@ -43,6 +43,9 @@ public class ChatGUI extends javax.swing.JFrame {
             System.out.println("Username: " + username);
         }
         
+        // TODO NOSHY
+        appendMessageToChat(username + " has conncted to WHOZUPP!", "Server");
+
         usernameLabel.setText(username);
         System.out.println("Username set");
 
@@ -59,10 +62,16 @@ public class ChatGUI extends javax.swing.JFrame {
                     return;
                 }
 
-                while ((message = client.recieveMessage()) == null);
-                //TODO: use username insted of userid
-                appendMessageToChat(message.message, "" + message.user);
-
+                // TODO NOSHYYYYYYYYYYYY MAKE PRETTY (LIKE YOU)
+                // IF type = 3 or 4 save the user list it changed.
+                while ((message = client.recieveMessage()) != null) {
+                    if (message.type == 1)
+                        appendMessageToChat(message.message, message.user);
+                    if (message.type == 3)
+                        appendMessageToChat(message.user + " has conncted to WHOZUPP!", "Server");
+                    if (message.type == 4)
+                        appendMessageToChat(message.user + " has disconncted from WHOZUPP!", "Server");
+                }
             }
         }).start();
 
@@ -101,7 +110,7 @@ public class ChatGUI extends javax.swing.JFrame {
 
         jLabel1.setText("Whozupp");
 
-        chatArea.setText("User1: Hello\nMeep: Hi\nUser1: How is CS313 going?\n");
+        chatArea.setText("");
         jScrollPane1.setViewportView(chatArea);
 
         sendMessageButton.setText("Send");
@@ -217,7 +226,7 @@ public class ChatGUI extends javax.swing.JFrame {
                 }
 
                 // TODO use recipiant not 1
-                if (client.sendMessage(1, message)) {
+                if (client.sendMessage(null, message)) {
                     sent.set(true);
                 };
 
