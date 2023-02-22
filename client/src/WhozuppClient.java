@@ -9,12 +9,13 @@ public class WhozuppClient {
 
    private Socket whozSocket;
    private int portNumber = 1234;
-   private String hostName = "localHost";
+   private String hostName = "localhost";
    private ObjectOutputStream objOut;
    private ObjectInputStream objIn;
+   
+   public boolean isConnected = false;
 
    public WhozuppClient() {
-      connect();
    }
 
    public void connect() {
@@ -22,6 +23,8 @@ public class WhozuppClient {
          this.whozSocket = new Socket(hostName, portNumber);
          this.objOut = new ObjectOutputStream(whozSocket.getOutputStream());
          this.objIn = new ObjectInputStream(whozSocket.getInputStream());
+         
+         isConnected = true;
       } catch(IOException e) {
          System.err.println("Couldn't get I/O for the connection to " +
                 hostName);
