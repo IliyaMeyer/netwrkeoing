@@ -1,6 +1,5 @@
 
 import java.awt.Color;
-import java.io.PrintWriter;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -43,7 +42,9 @@ public class ChatGUI extends javax.swing.JFrame {
             username = JOptionPane.showInputDialog(frame, "Username taken.\nEnter your newusername:", "Username", JOptionPane.PLAIN_MESSAGE);
             System.out.println("Username: " + username);
         }
-        System.out.println("Username: set");
+        
+        usernameLabel.setText(username);
+        System.out.println("Username set");
 
         setVisible(true);
         connectedStatusLabel.setText("Connected");
@@ -112,8 +113,6 @@ public class ChatGUI extends javax.swing.JFrame {
 
         jLabel2.setText("Chat To:");
 
-        usernameLabel.setText("Username: " + username);
-
         recipiantConfirmButton.setText("Confirm");
         recipiantConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,7 +174,7 @@ public class ChatGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addGap(0, 23, Short.MAX_VALUE)
                         .addComponent(usernameLabel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(connectedStatusLabel)
